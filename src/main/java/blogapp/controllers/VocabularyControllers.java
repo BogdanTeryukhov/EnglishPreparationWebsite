@@ -17,4 +17,9 @@ public class VocabularyControllers {
     public String phrasalVerbs(Model model){
         return "phrasalVerbs";
     }
+
+    @GetMapping("/vocabulary/phrasalVerbs/travelAndTransport")
+    public String travelAndTransport(Model model){
+        return "travel-and-transport";
+    }
 }
