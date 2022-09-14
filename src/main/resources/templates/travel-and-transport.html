@@ -147,83 +147,105 @@
         </div>
 
         <div class="container mt-3">
-            <div class="row">
+            <div class="row" id="test">
+                    <div>
+                        <ul>
+                            <li class="fw-light fs-4">We can
+                                <span class="mark">start our journey</span>
+                                <input data-right="set out/off" aria-label="Small input group">
+                                towards the mountains at dawn</li>
+                        </ul>
+                    </div>
 
-                <div>
-                    <ul>
-                        <li class="fw-light fs-4">We can
-                            <span class="mark">start our journey</span>
-                            <input type="text" class="form" aria-label="Small input group">
-                            towards the mountains at dawn</li>
-                    </ul>
-                </div>
+                    <div >
+                        <ul>
+                            <li class="fw-light fs-4">Dad fetched the luggage while Mum
+                                <span class="mark">register</span>
+                                <input data-right="checked in"  aria-label="Small input group">
+                                at the hotel</li>
+                        </ul>
+                    </div>
 
-                <div >
-                    <ul>
-                        <li class="fw-light fs-4">Dad fetched the luggage while Mum
-                            <span class="mark">register</span>
-                            <input type="text" class="form" aria-label="Small input group">
-                            at the hotel</li>
-                    </ul>
-                </div>
+                    <div >
+                        <ul>
+                            <li class="fw-light fs-4">I asked the taxi driver to
+                                <span class="mark">let me get out</span>
+                                <input data-right="drop me off"  aria-label="Small input group">
+                                outside of the train station
+                            </li>
+                        </ul>
+                    </div>
 
-                <div >
-                    <ul>
-                        <li class="fw-light fs-4">I asked the taxi driver to
-                            <span class="mark">let me get out</span>
-                            <input type="text" class="form" aria-label="Small input group">
-                            outside of the train station
-                        </li>
-                    </ul>
-                </div>
+                    <div >
+                        <ul>
+                            <li class="fw-light fs-4">Oh, no! I`ve forgotten my passport! We`ll have to
+                                <span class="mark">go back</span>
+                                <input data-right="turn around"  aria-label="Small input group">
+                                and get it
+                            </li>
+                        </ul>
+                    </div>
 
-                <div >
-                    <ul>
-                        <li class="fw-light fs-4">Oh, no! I`ve forgotten my passport! We`ll have to
-                            <span class="mark">go back</span>
-                            <input type="text" class="form" aria-label="Small input group">
-                            and get it
-                        </li>
-                    </ul>
-                </div>
+                    <div >
+                        <ul>
+                            <li class="fw-light fs-4">The most exciting moment is when the plane
+                                <span class="mark">leaves the ground</span>
+                                <input data-right="takes off"  aria-label="Small input group">
+                            </li>
+                        </ul>
+                    </div>
 
-                <div >
-                    <ul>
-                        <li class="fw-light fs-4">The most exciting moment is when the plane
-                            <span class="mark">leaves the ground</span>
-                            <input type="text" class="form" aria-label="Small input group">
-                        </li>
-                    </ul>
-                </div>
+                    <div >
+                        <ul>
+                            <li class="fw-light fs-4">Stop the car! I think we`ve
+                                <span class="mark">hit</span>
+                                <input data-right="run over"  aria-label="Small input group">                                a dog
+                            </li>
+                        </ul>
+                    </div>
 
-                <div >
-                    <ul>
-                        <li class="fw-light fs-4">Stop the car! I think we`ve
-                            <span class="mark">hit</span>
-                            <input type="text" class="form" aria-label="Small input group">
-                            a dog
-                        </li>
-                    </ul>
-                </div>
-
-                <div >
-                    <ul>
-                        <li class="fw-light fs-4">I don`t think a horse can ever
-                            <span class="mark">stay at the same speed as</span>
-                            <input type="text" class="form" aria-label="Small input group">
-                            a car
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <button type="button" class="btn btn-outline-secondary">Check the answers</button>
-                </div>
+                    <div >
+                        <ul>
+                            <li class="fw-light fs-4">I don`t think a horse can ever
+                                <span class="mark">stay at the same speed as</span>
+                                <input data-right="keep up with"  aria-label="Small input group">
+                                a car
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <button id="button" type="submit" class="btn btn-outline-dark">Check the answers</button>
+                        <button id="reset-button" type="reset" role="button" class="btn btn-outline-dark float-end">Reset test</button>
+                    </div>
             </div>
-        </div>
+            <style>
+                .correct{
+                    border: 2px solid green;
+                }
+                .incorrect{
+                    border: 2px solid red;
+                }
+            </style>
+            <script>
+                let button = document.querySelector('#button')
+                button.addEventListener('click', function () {
+                    let inputs = document.querySelectorAll('#test input')
+                    for (let input of inputs) {
+                        if (input.value === input.dataset.right){
+                            input.classList.add('correct')
+                        }else{
+                            input.classList.add('incorrect')
+                        }
+                    }
+                })
 
+                let resetButton = document.querySelector('#reset-button')
+                resetButton.addEventListener('click',function (){
+                    window.location.reload()
+                })
+            </script>
+        </div>
         <div th:insert="blocks/footer :: footer"></div>
     </body>
 </main>
-
-
 </html>
