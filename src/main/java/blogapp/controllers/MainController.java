@@ -19,4 +19,9 @@ public class MainController {
         return "about";
     }
 
+    @GetMapping("/sign-in-page")
+    public String signIn(Model model){
+        model.addAttribute("title", "Страница входа");
+        return "sign-in-page";
+    }
 }
