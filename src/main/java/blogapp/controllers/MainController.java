@@ -15,13 +15,13 @@ public class MainController {
 
     @GetMapping("/about")
     public String about(Model model) {
-        model.addAttribute("title", "Страница о нас");
+        model.addAttribute("about", "Страница о нас");
         return "about";
     }
 
     @GetMapping("/sign-in-page")
     public String signIn(Model model){
-        model.addAttribute("title", "Страница входа");
+        model.addAttribute("login", "Страница входа");
         return "sign-in-page";
     }
 }

@@ -1,0 +1,20 @@
+<div th:fragment="header">
+    <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+        <div class="container-fluid">
+
+            <form class="btn-group">
+                <a role="button" class="btn btn-outline-success align-content-start" type="button" href="/">Main</a>
+                <a role="button" class="btn btn-outline-success align-content-start" type="button" href="/tests">Tests</a>
+                <a role="button" class="btn btn-outline-success align-content-start" type="button" href="/vocabulary">Vocabulary</a>
+            </form>
+
+
+            <form class="d-flex">
+                <a role="button" class="btn btn-outline-success me-md-2" type="submit" href="/login-page">Sign_in</a>
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
+
+        </div>
+    </nav>
+</div>

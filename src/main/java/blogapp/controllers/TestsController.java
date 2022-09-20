@@ -9,6 +9,7 @@ public class TestsController {
 
     @GetMapping("/tests")
     public String testsMain(Model model){
+        model.addAttribute("Tests", "Тесты");
         return "tests-main";
     }
 }

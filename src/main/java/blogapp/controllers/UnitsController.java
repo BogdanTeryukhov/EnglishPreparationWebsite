@@ -9,6 +9,7 @@ public class UnitsController {
 
     @GetMapping("/unit1")
     public String unit1(Model model){
+        model.addAttribute("unit1","Первый юнит");
         return "unit1";
     }
 }
