@@ -1,31 +1,32 @@
-<!Doctype html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-    <title th:text="${login}"></title>
+    <title th:text="${register}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
- <body class="form-signin w-100 m-auto">
-     <form >
-         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-         <div class="form-floating">
-             <input type="email" class="form-control col-5" id="floatingInput" placeholder="name@example.com">
-             <label for="floatingInput">Email address</label>
-         </div>
-         <div class="form-floating">
-             <input type="password" class="form-control col-5" id="floatingPassword" placeholder="Password">
-             <label for="floatingPassword">Password</label>
-         </div>
-         <div class="checkbox mb-3">
-             <label>
-                 <input type="checkbox" value="remember-me"> Remember me
-             </label></div>
-         <button class="w-100 btn btn-lg btn-primary " type="submit">Sign in</button>
-         <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
-         <p>Don`t have an account?</p>
-         <a type="button" role="button" href="/register">Create an account</a>
-     </form>
- </body>
+<body class="form-signin w-100 m-auto">
+<form method="post">
+    <h1 class="h3 mb-3 fw-normal">Please create new account</h1>
+    <div class="form-floating">
+        <input type="text" name="userName" class="form-control col-5" id="floatingUserName" placeholder="name">
+        <label for="floatingUserName">Name</label>
+    </div>
+    <div class="form-floating">
+        <input type="text" name="email" class="form-control col-5" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating">
+        <input type="text" name="password" class="form-control col-5" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+    </div>
+
+    <button class="w-100 btn btn-lg btn-primary " type="submit">Create account</button>
+
+
+    <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
+</form>
+</body>
 <style>
     html, body {
         height: 100%;
