@@ -48,13 +48,11 @@ public class MainController {
         User user = new User(userName,email,password);
         userRepository.save(user);
 
-        Iterable<User> users = userRepository.findAll();
-        model.addAttribute("users", users);
+        //Iterable<User> users = userRepository.findAll();
+        //model.addAttribute("users", users);
 
-        for (User user1:users) {
-            System.out.println(user1.toString());
-        }
+        //for (User user1:users) { System.out.println(user1.toString()); }
 
-        return "register";
+        return "redirect:/";
     }
 }
