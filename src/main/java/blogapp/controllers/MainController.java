@@ -24,4 +24,9 @@ public class MainController {
         model.addAttribute("login", "Страница входа");
         return "sign-in-page";
     }
+
+    @GetMapping("/register")
+    public String register(Model model){
+        return "register";
+    }
 }
