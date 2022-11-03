@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"> Ваши ответы</header>
+    <main class="container-fluid mt-2 " >
+        <span th:text="${travel.setOutOff}"></span>
+        <br>
+        <span th:text="${travel.checkedIn}"></span>
+        <br>
+        <span th:text="${travel.dropMeOff}"></span>
+        <br>
+        <span th:text="${travel.turnAround}"></span>
+        <br>
+        <span th:text="${travel.takesOff}"></span>
+        <br>
+        <span th:text="${travel.runOver}"></span>
+        <br>
+        <span th:text="${travel.keepUpWith}"></span>
+        <br>
+    </main>
+<div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>

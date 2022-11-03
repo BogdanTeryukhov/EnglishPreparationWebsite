@@ -147,70 +147,102 @@
             <h3>Write a phrasal verb in the correct form to replace the highlighted words. Add any other words you need.</h3>
         </div>
 
-        <div class="container mt-3">
+
+        <form class="container mt-3" action="#" th:action="@{/vocabulary/phrasalVerbs/travelAndTransport}" method="post" th:object="${travel}">
             <div class="row" id="test">
-                    <div>
+                    <div th:for="setOutoff">
                         <ul>
                             <li class="fw-light fs-4">We can
                                 <span class="mark">start our journey</span>
-                                <input data-right="set out/off" aria-label="Small input group">
-                                towards the mountains at dawn</li>
+                                <input th:field="*{setOutOff}" aria-label="Small input group">
+                                towards the mountains at dawn
+                                <br>
+                                <span style="color: red" class="validationError"
+                                      th:if="${#fields.hasErrors('setOutOff')}"
+                                      th:errors="*{setOutOff}"> Has error</span>
+                            </li>
                         </ul>
                     </div>
 
-                    <div >
+                    <div th:for="checkedIn">
                         <ul>
                             <li class="fw-light fs-4">Dad fetched the luggage while Mum
                                 <span class="mark">register</span>
-                                <input data-right="checked in"  aria-label="Small input group">
-                                at the hotel</li>
+                                <input th:field="*{checkedIn}"  aria-label="Small input group">
+                                at the hotel
+                                <br>
+                                <span style="color: red" class="validationError"
+                                      th:if="${#fields.hasErrors('checkedIn')}"
+                                      th:errors="*{checkedIn}"> Has error</span>
+                            </li>
                         </ul>
                     </div>
 
-                    <div >
+                    <div th:for="dropMeOff">
                         <ul>
                             <li class="fw-light fs-4">I asked the taxi driver to
                                 <span class="mark">let me get out</span>
-                                <input data-right="drop me off"  aria-label="Small input group">
-                                outside of the train station
+                                <input th:field="*{dropMeOff}"  aria-label="Small input group">
+                                 outside of the train station
+                                <br>
+                                <span style="color: red" class="validationError"
+                                      th:if="${#fields.hasErrors('dropMeOff')}"
+                                      th:errors="*{dropMeOff}"> Has error</span>
                             </li>
                         </ul>
                     </div>
 
-                    <div >
+                    <div th:for="turnAround">
                         <ul>
                             <li class="fw-light fs-4">Oh, no! I`ve forgotten my passport! We`ll have to
                                 <span class="mark">go back</span>
-                                <input data-right="turn around"  aria-label="Small input group">
+                                <input th:field="*{turnAround}"  aria-label="Small input group">
                                 and get it
+                                <br>
+                                <span style="color: red" class="validationError"
+                                      th:if="${#fields.hasErrors('turnAround')}"
+                                      th:errors="*{turnAround}"> Has error</span>
                             </li>
                         </ul>
                     </div>
 
-                    <div >
+                    <div th:for="takesOff">
                         <ul>
                             <li class="fw-light fs-4">The most exciting moment is when the plane
                                 <span class="mark">leaves the ground</span>
-                                <input data-right="takes off"  aria-label="Small input group">
+                                <input th:field="*{takesOff}"  aria-label="Small input group">
+                                <br>
+                                <span style="color: red" class="validationError"
+                                      th:if="${#fields.hasErrors('takesOff')}"
+                                      th:errors="*{takesOff}"> Has error</span>
                             </li>
                         </ul>
                     </div>
 
-                    <div >
+                    <div th:for="runOver">
                         <ul>
                             <li class="fw-light fs-4">Stop the car! I think we`ve
                                 <span class="mark">hit</span>
-                                <input data-right="run over"  aria-label="Small input group">                                a dog
+                                <input th:field="*{runOver}"  aria-label="Small input group">
+                                a dog
+                                <br>
+                                <span style="color: red" class="validationError"
+                                      th:if="${#fields.hasErrors('runOver')}"
+                                      th:errors="*{runOver}"> Has error</span>
                             </li>
                         </ul>
                     </div>
 
-                    <div >
+                    <div th:for="keepUpWith">
                         <ul>
                             <li class="fw-light fs-4">I don`t think a horse can ever
                                 <span class="mark">stay at the same speed as</span>
-                                <input data-right="keep up with"  aria-label="Small input group">
+                                <input th:field="*{keepUpWith}"  aria-label="Small input group">
                                 a car
+                                <br>
+                                <span style="color: red" class="validationError"
+                                      th:if="${#fields.hasErrors('keepUpWith')}"
+                                      th:errors="*{keepUpWith}"> Has error</span>
                             </li>
                         </ul>
                     </div>
@@ -221,7 +253,7 @@
             </div>
 
             <script type="text/javascript" th:src="@{/js/testForTravelAndTransport.js}"></script>
-        </div>
+        </form>
         <div th:insert="blocks/footer :: footer"></div>
     </body>
 </main>
