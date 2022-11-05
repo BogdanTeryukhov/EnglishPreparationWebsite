@@ -1,25 +1,32 @@
 package blogapp.forTests;
 
 import lombok.Data;
-
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 @Data
 public class TravelAndTransportTest {
 
-    @Pattern(regexp = "[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
+    @NotBlank(message = "Не должно быть пустым, хоть что-нибудь напиши :)")
+    @Pattern(regexp = "[a-zA-Z]*\s*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
     private String setOutOff;
-    @Pattern(regexp = "[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
+    @NotBlank(message = "Не должно быть пустым, хоть что-нибудь напиши :)")
+    @Pattern(regexp = "[a-zA-Z]*.*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
     private String checkedIn;
-    @Pattern(regexp = "[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
+    @NotBlank(message = "Не должно быть пустым, хоть что-нибудь напиши :)")
+    @Pattern(regexp = "[a-zA-Z]*.*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
     private String dropMeOff;
-    @Pattern(regexp = "[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
+    @NotBlank(message = "Не должно быть пустым, хоть что-нибудь напиши :)")
+    @Pattern(regexp = "[a-zA-Z]*.*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
     private String turnAround;
-    @Pattern(regexp = "[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
+    @NotBlank(message = "Не должно быть пустым, хоть что-нибудь напиши :)")
+    @Pattern(regexp = "[a-zA-Z]*.*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
     private String takesOff;
-    @Pattern(regexp = "[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
+    @NotBlank(message = "Не должно быть пустым, хоть что-нибудь напиши :)")
+    @Pattern(regexp = "[a-zA-Z]*.*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
     private String runOver;
-    @Pattern(regexp = "[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
+    @NotBlank(message = "Не должно быть пустым, хоть что-нибудь напиши :)")
+    @Pattern(regexp = "[a-zA-Z]*\t*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
     private String keepUpWith;
 
     @Override

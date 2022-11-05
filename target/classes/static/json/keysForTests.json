@@ -1,0 +1,11 @@
+{
+  "travelAndTransport": [
+    {"key" : "set out / set off"},
+    {"key" : "checked in"},
+    {"key" : "drop me off"},
+    {"key" : "turn around"},
+    {"key" : "takes off"},
+    {"key" : "run over"},
+    {"key" : "keep up with"}
+  ]
+}
