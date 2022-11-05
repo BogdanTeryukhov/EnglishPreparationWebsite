@@ -11,22 +11,22 @@ public class TravelAndTransportTest {
     @Pattern(regexp = "[a-zA-Z]*\s*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
     private String setOutOff;
     @NotBlank(message = "Не должно быть пустым, хоть что-нибудь напиши :)")
-    @Pattern(regexp = "[a-zA-Z]*.*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
+    @Pattern(regexp = "[a-zA-Z]*\s*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
     private String checkedIn;
     @NotBlank(message = "Не должно быть пустым, хоть что-нибудь напиши :)")
-    @Pattern(regexp = "[a-zA-Z]*.*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
+    @Pattern(regexp = "[a-zA-Z]*\s*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
     private String dropMeOff;
     @NotBlank(message = "Не должно быть пустым, хоть что-нибудь напиши :)")
-    @Pattern(regexp = "[a-zA-Z]*.*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
+    @Pattern(regexp = "[a-zA-Z]*\s*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
     private String turnAround;
     @NotBlank(message = "Не должно быть пустым, хоть что-нибудь напиши :)")
-    @Pattern(regexp = "[a-zA-Z]*.*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
+    @Pattern(regexp = "[a-zA-Z]*\s*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
     private String takesOff;
     @NotBlank(message = "Не должно быть пустым, хоть что-нибудь напиши :)")
-    @Pattern(regexp = "[a-zA-Z]*.*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
+    @Pattern(regexp = "[a-zA-Z]*\s*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
     private String runOver;
     @NotBlank(message = "Не должно быть пустым, хоть что-нибудь напиши :)")
-    @Pattern(regexp = "[a-zA-Z]*\t*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
+    @Pattern(regexp = "[a-zA-Z]*\s*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
     private String keepUpWith;
 
     @Override

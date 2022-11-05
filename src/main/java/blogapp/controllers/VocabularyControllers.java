@@ -14,7 +14,7 @@ import java.util.Objects;
 
 @Controller
 @RequestMapping("/vocabulary")
-public class VocabularyControllers {
+public class VocabularyControllers{
 
     @GetMapping
     public String vocabulary(Model model) {
@@ -50,27 +50,27 @@ public class VocabularyControllers {
 
     public Integer howManyRightAnswersInTravelAndTransportTest(TravelAndTransportTest test){
         int count = 0;
-        if (Objects.equals(test.getSetOutOff().toLowerCase(), "set out")
-                || Objects.equals(test.getSetOutOff(), "set off")
-                || Objects.equals(test.getSetOutOff(), "set out / off")){
+        if (Objects.equals(test.getSetOutOff().toLowerCase().trim(), "set out")
+                || Objects.equals(test.getSetOutOff().trim(), "set off")
+                || Objects.equals(test.getSetOutOff().trim(), "set out / off")){
             count++;
         }
-        if (Objects.equals(test.getCheckedIn().toLowerCase(), "checked in")){
+        if (Objects.equals(test.getCheckedIn().toLowerCase().trim(), "checked in")){
             count++;
         }
-        if (Objects.equals(test.getDropMeOff().toLowerCase(), "drop me off")){
+        if (Objects.equals(test.getDropMeOff().toLowerCase().trim(), "drop me off")){
             count++;
         }
-        if (Objects.equals(test.getTurnAround().toLowerCase(), "turn around")){
+        if (Objects.equals(test.getTurnAround().toLowerCase().trim(), "turn around")){
             count++;
         }
-        if (Objects.equals(test.getTakesOff().toLowerCase(), "takes off")){
+        if (Objects.equals(test.getTakesOff().toLowerCase().trim(), "takes off")){
             count++;
         }
-        if (Objects.equals(test.getRunOver().toLowerCase(), "run over")){
+        if (Objects.equals(test.getRunOver().toLowerCase().trim(), "run over")){
             count++;
         }
-        if (Objects.equals(test.getKeepUpWith().toLowerCase(), "keep up with")){
+        if (Objects.equals(test.getKeepUpWith().toLowerCase().trim(), "keep up with")){
             count++;
         }
         return count;
