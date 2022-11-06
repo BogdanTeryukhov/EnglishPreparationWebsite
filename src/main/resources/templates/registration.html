@@ -10,7 +10,7 @@
 <header th:insert="blocks/header :: header"></header>
 
 <main>
-    <form action="#" method="post" th:action="@{registration}" th:object="${register}">
+    <form action="#" method="post" th:action="@{registration}" th:object="${user}">
         <h1 class="h3 mb-3 fw-normal">Please create an account</h1>
         <div class="form-floating">
             <input th:field="*{userName}" type="text" class="form-control col-5" id="floatingUsername" placeholder="Username">
@@ -29,7 +29,7 @@
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary " type="submit" href="/registration">Create new account</button>
+        <button class="w-100 btn btn-lg btn-primary " type="submit">Create new account</button>
     </form>
 </main>
 <div th:insert="blocks/footer :: footer"></div>

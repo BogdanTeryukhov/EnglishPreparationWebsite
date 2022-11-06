@@ -3,12 +3,13 @@ package blogapp.controllers;
 import blogapp.entity.User;
 import blogapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class MainController {
@@ -36,32 +37,77 @@ public class MainController {
     @GetMapping("/sign-in-page")
     public String signIn(Model model){
         model.addAttribute("title", "Страница входа");
+        model.addAttribute("doUser", new User());
         return "sign-in-page";
     }
-
-    @GetMapping("/progress")
-    public String progress(Model model){
-        model.addAttribute("title", "Страница прогресса");
-        return "progress";
+    @PostMapping("/sign-in-page")
+    public String doSignIn(@ModelAttribute("doUser") User user){
+        System.out.println(user);
+        //List<User> userList = userService.getAllUsers();
+        for (User value : userService.getAllUsers()) {
+            if (Objects.equals(value.getEmail(), user.getEmail())
+                    && Objects.equals(value.getPassword(), user.getPassword())) {
+                //System.out.println(value.getPassword() + "---" + user.getPassword()));
+                return "redirect:/";
+            }
+        }
+        return "redirect:/registration";
     }
 
-    @GetMapping("/students")
+    @GetMapping("/users")
     public String students(Model model){
         model.addAttribute("title", "Страница пользователей");
         model.addAttribute("users", userService.getAllUsers());
-        return "students";
+
+        return "users";
     }
 
     @GetMapping("/registration")
     public String registration(Model model){
         model.addAttribute("title", "Страница регистрации");
-        model.addAttribute("register", new User());
+        model.addAttribute("user", new User());
         return "registration";
     }
 
     @PostMapping("/registration")
-    public String doRegister(@ModelAttribute("register") User user){
-        System.out.println(user);
+    public String doRegister(@ModelAttribute("user") User user){
+        for (User value: userService.getAllUsers()) {
+            if (Objects.equals(value.getUserName(), user.getUserName())
+                    && Objects.equals(value.getEmail(), user.getEmail())
+                    && Objects.equals(value.getPassword(), user.getPassword())){
+                return "redirect:/sign-in-page";
+            }
+        }
+
+        userService.saveUser(user);
         return "redirect:/";
+    }
+
+    @GetMapping("/users/{id}")
+    public String deleteUser(@PathVariable Long id){
+        userService.deleteUserById(id);
+        return "redirect:/users";
+    }
+
+    @GetMapping("/users/edit/{id}")
+    public String editStudent(@PathVariable Long id, Model model){
+        model.addAttribute("user", userService.getUserById(id));
+        return "editUser";
+    }
+
+
+    @PostMapping("/users/{id}")
+    public String updateUser(@PathVariable Long id,
+                             @ModelAttribute("user") User user,
+                             Model model){
+        User existingUser = userService.getUserById(id);
+
+        existingUser.setId(user.getId());
+        existingUser.setUserName(user.getUserName());
+        existingUser.setEmail(user.getEmail());
+        existingUser.setPassword(user.getPassword());
+
+        userService.updateUser(existingUser);
+        return "redirect:/students";
     }
 }

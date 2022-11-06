@@ -19,6 +19,7 @@
                     <th>Username</th>
                     <th>Email</th>
                     <th>Password</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,6 +27,11 @@
                     <td th:text="${user.userName}"></td>
                     <td th:text="${user.email}"></td>
                     <td th:text="${user.password}"></td>
+                    <td>
+                        <a th:href="@{/users/edit/{id}(id=${user.id})}"
+                           class="btn btn-primary">Update</a>
+                        <a th:href="@{/users/{id}(id=${user.id})}"
+                        class="btn btn-danger">Delete</a></td>
                 </tr>
             </tbody>
         </table>
