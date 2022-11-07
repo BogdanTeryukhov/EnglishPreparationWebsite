@@ -1,18 +1,19 @@
 package blogapp.controllers;
 
 import blogapp.entity.User;
+import blogapp.repository.UserRepository;
 import blogapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Objects;
 
 @Controller
 public class MainController {
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private UserService userService;
@@ -55,7 +56,7 @@ public class MainController {
     }
 
     @GetMapping("/users")
-    public String students(Model model){
+    public String users(Model model){
         model.addAttribute("title", "Страница пользователей");
         model.addAttribute("users", userService.getAllUsers());
 
@@ -78,7 +79,7 @@ public class MainController {
                 return "redirect:/sign-in-page";
             }
         }
-
+        //userRepository.save(user);
         userService.saveUser(user);
         return "redirect:/";
     }
@@ -108,6 +109,6 @@ public class MainController {
         existingUser.setPassword(user.getPassword());
 
         userService.updateUser(existingUser);
-        return "redirect:/students";
+        return "redirect:/users";
     }
 }

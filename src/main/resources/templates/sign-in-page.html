@@ -1,77 +1,81 @@
-<!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-    <title th:text="${title}"></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
- <body class="form-signin w-100 m-auto">
-     <form action="#" th:action="@{sign-in-page}" method="post" th:object="${doUser}">
-         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-         <div class="form-floating">
-             <input th:field="*{email}" type="email" class="form-control col-5" id="floatingInput" placeholder="name@example.com">
-             <label for="floatingInput">Email address</label>
-         </div>
-         <div class="form-floating">
-             <input th:field="*{password}" type="password" class="form-control col-5" id="floatingPassword" placeholder="Password">
-             <label for="floatingPassword">Password</label>
-         </div>
-         <div class="checkbox mb-3">
-             <label>
-                 <input type="checkbox" value="remember-me"> Remember me
-             </label>
-         </div>
-         <button class="w-100 btn btn-lg btn-primary " type="submit">Sign in</button>
-         <button class="w-100 btn btn-lg btn-primary " type="submit" href="/registration">Create new account</button>
-         <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
-     </form>
- </body>
-<style>
-    html, body {
-        height: 100%;
-    }
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{vendor/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{fonts/iconic/css/material-design-iconic-font.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{vendor/animate/animate.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{vendor/css-hamburgers/hamburgers.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{vendor/animsition/css/animsition.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{vendor/select2/select2.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{vendor/daterangepicker/daterangepicker.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/util.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/main.css}">
 
-    .form-signin {
-        max-width: 330px;
-        padding: -1px;
-    }
+    <meta name="robots" content="noindex, follow">
+    <script nonce="b1289d11-9b53-4bb1-8612-007f9898d00a">(function(w,d){!function(Z,_,ba,bb){Z.zarazData=Z.zarazData||{};Z.zarazData.executed=[];Z.zaraz={deferred:[],listeners:[]};Z.zaraz.q=[];Z.zaraz._f=function(bc){return function(){var bd=Array.prototype.slice.call(arguments);Z.zaraz.q.push({m:bc,a:bd})}};for(const be of["track","set","debug"])Z.zaraz[be]=Z.zaraz._f(be);Z.zaraz.init=()=>{var bf=_.getElementsByTagName(bb)[0],bg=_.createElement(bb),bh=_.getElementsByTagName("title")[0];bh&&(Z.zarazData.t=_.getElementsByTagName("title")[0].text);Z.zarazData.x=Math.random();Z.zarazData.w=Z.screen.width;Z.zarazData.h=Z.screen.height;Z.zarazData.j=Z.innerHeight;Z.zarazData.e=Z.innerWidth;Z.zarazData.l=Z.location.href;Z.zarazData.r=_.referrer;Z.zarazData.k=Z.screen.colorDepth;Z.zarazData.n=_.characterSet;Z.zarazData.o=(new Date).getTimezoneOffset();Z.zarazData.q=[];for(;Z.zaraz.q.length;){const bl=Z.zaraz.q.shift();Z.zarazData.q.push(bl)}bg.defer=!0;for(const bm of[localStorage,sessionStorage])Object.keys(bm||{}).filter((bo=>bo.startsWith("_zaraz_"))).forEach((bn=>{try{Z.zarazData["z_"+bn.slice(7)]=JSON.parse(bm.getItem(bn))}catch{Z.zarazData["z_"+bn.slice(7)]=bm.getItem(bn)}}));bg.referrerPolicy="origin";bg.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(Z.zarazData)));bf.parentNode.insertBefore(bg,bf)};["complete","interactive"].includes(_.readyState)?zaraz.init():Z.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,0,"script");})(window,document);</script></head>
+<body>
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form class="login100-form validate-form" action="#" th:action="@{sign-in-page}" method="post" th:object="${doUser}">
+                <span class="login100-form-title p-b-26">Welcome</span>
+                <span class="login100-form-title p-b-48">
+                    <i class="zmdi zmdi-font"></i>
+                </span>
+                <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+                    <input th:field="*{email}" class="input100" type="text" name="email">
+                    <span class="focus-input100" data-placeholder="Email"></span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Enter password">
+                    <span class="btn-show-pass">
+                        <i class="zmdi zmdi-eye"></i>
+                    </span>
+                    <input th:field="*{password}" class="input100" type="password" name="pass">
+                    <span class="focus-input100" data-placeholder="Password"></span>
+                </div>
+                <div class="container-login100-form-btn">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="login100-form-btn">Login</button>
+                    </div>
+                </div>
+                <div class="text-center p-t-115"><span class="txt1">Don’t have an account?</span>
+                    <a class="txt2" href="/registration">Create</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="dropDownSelect1"></div>
 
-    .form-signin .form-floating:focus-within {
-        z-index: 2;
-    }
+<script th:src="@{vendor/jquery/jquery-3.2.1.min.js}"></script>
 
-    .h3 {
-        padding: 10px;
-        margin-left: 40px;
+<script th:src="@{vendor/animsition/js/animsition.min.js}"></script>
 
-    }
+<script th:src="@{vendor/bootstrap/js/popper.js}"></script>
+<script th:src="@{vendor/bootstrap/js/bootstrap.min.js}"></script>
 
-    .form-signin input[type="email"] {
-        margin-bottom: -1px;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-        width: 150%;
-    }
+<script th:src="@{vendor/select2/select2.min.js}"></script>
 
-    .form-signin input[type="password"] {
-        margin-bottom: 10px;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-        width: 150%;
-    }
+<script th:src="@{vendor/daterangepicker/moment.min.js}"></script>
+<script th:src="@{vendor/daterangepicker/daterangepicker.js}"></script>
 
-    .form-signin button [type="submit"]{
-        display: block;
-        width: 150%;
-    }
+<script th:src="@{vendor/countdowntime/countdowntime.js}"></script>
 
+<script th:src="@{js/main.js}"></script>
 
-    body {
-        display: flex;
-        align-items: center;
-        padding-top: 40px;
-        padding-bottom: 40px;
-        background-color: #f5f5f5;
-    }
-</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993" integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA==" data-cf-beacon='{"rayId":"766617680c579da4","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2022.11.0","si":100}' crossorigin="anonymous"></script>
+</body>
 </html>
