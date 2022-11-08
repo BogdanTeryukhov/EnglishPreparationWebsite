@@ -1,5 +1,6 @@
 package blogapp.controllers;
 
+import blogapp.entity.Role;
 import blogapp.entity.User;
 import blogapp.repository.UserRepository;
 import blogapp.service.UserService;
@@ -7,15 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.transaction.Transactional;
+import java.util.Collections;
 import java.util.Objects;
 
 @Controller
 public class MainController {
 
-    @Autowired
-    private UserRepository userRepository;
     @Autowired
     private UserService userService;
 
@@ -42,15 +41,20 @@ public class MainController {
                          @ModelAttribute("alreadyCreated") String already,
                          @ModelAttribute("justCreated") String just,
                          @ModelAttribute("invalid") String invalid){
+        User user = new User();
+
         model.addAttribute("title", "Страница входа");
-        model.addAttribute("doUser", new User());
+        model.addAttribute("doUser", user);
+       // System.out.println(user);
+       // model.addAttribute("name", "Hi"+ user.getUserName());
         return "sign-in-page";
     }
 
+    //не нужно, вроде как
     @PostMapping("/sign-in-page")
     public String doSignIn(@ModelAttribute("doUser") User user,
                            Model model){
-
+        System.out.println(user);
         for (User value : userService.getAllUsers()) {
             if (Objects.equals(value.getEmail(), user.getEmail())
                     && Objects.equals(value.getPassword(), user.getPassword())) {
@@ -58,17 +62,11 @@ public class MainController {
                 return "redirect:/";
             }
         }
+
         model.addAttribute("invalid","Invalid Email or Password");
         return "redirect:/sign-in-page";
     }
 
-    @GetMapping("/users")
-    public String users(Model model){
-        model.addAttribute("title", "Страница пользователей");
-        model.addAttribute("users", userService.getAllUsers());
-
-        return "users";
-    }
 
     @GetMapping("/registration")
     public String registration(Model model){
@@ -78,24 +76,26 @@ public class MainController {
     }
 
     @PostMapping("/registration")
-    @Transactional
     public String doRegister(@ModelAttribute("user") User user,
                              Model model){
-        for (User value: userService.getAllUsers()) {
-            if (Objects.equals(value.getUserName(), user.getUserName())
-                    && Objects.equals(value.getEmail(), user.getEmail())
-                    && Objects.equals(value.getPassword(), user.getPassword())){
-                //model.addAttribute("needButton", false);
-                model.addAttribute("alreadyCreated", "You already have an account! Please, Log in");
-                return "redirect:/sign-in-page";
-            }
+
+        if (user.getId()!=null){
+            return "registration";
+        }else {
+            user.setActive(true);
+            user.setRoles(Collections.singleton(Role.USER));
+            model.addAttribute("justCreated", "Now you have an account! Please, Log in");
+            userService.saveUser(user);
+            return "redirect:/sign-in-page";
         }
+    }
 
-        model.addAttribute("justCreated", "Now you have an account! Please, Log in");
-        //model.addAttribute("needButton", false)
+    @GetMapping("/users")
+    public String users(Model model){
+        model.addAttribute("title", "Страница пользователей");
+        model.addAttribute("users", userService.getAllUsers());
 
-        userService.saveUser(user);
-        return "redirect:/sign-in-page";
+        return "users";
     }
 
     @GetMapping("/users/{id}")

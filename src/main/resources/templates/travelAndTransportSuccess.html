@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>Страница Ответов</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-
 </head>
 <body>
 <header th:insert="blocks/header :: header"> Ваши ответы</header>
@@ -42,8 +42,11 @@
                 </tr>
             </tr>
         </table>
-        <div style="text-align: right">
-            <span th:text="${howManyRightAnswers}"></span><span>/7</span>
+        <div>
+            <div class="btn btn-primary" href="/travelAndTransport">Вернуться</div>
+            <div style="text-align: right">
+                <span th:text="${howManyRightAnswers}"></span><span>/7</span>
+            </div>
         </div>
     </main>
 </body>
