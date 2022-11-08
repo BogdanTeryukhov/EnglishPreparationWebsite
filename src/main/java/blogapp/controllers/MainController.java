@@ -8,13 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.Objects;
 
 @Controller
 public class MainController {
+
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private UserService userService;
 
@@ -26,6 +27,7 @@ public class MainController {
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("title", "Главная страница");
+        //model.addAttribute("button", needButton);
         return "home";
     }
 
@@ -36,23 +38,28 @@ public class MainController {
     }
 
     @GetMapping("/sign-in-page")
-    public String signIn(Model model){
+    public String signIn(Model model,
+                         @ModelAttribute("alreadyCreated") String already,
+                         @ModelAttribute("justCreated") String just,
+                         @ModelAttribute("invalid") String invalid){
         model.addAttribute("title", "Страница входа");
         model.addAttribute("doUser", new User());
         return "sign-in-page";
     }
+
     @PostMapping("/sign-in-page")
-    public String doSignIn(@ModelAttribute("doUser") User user){
-        System.out.println(user);
-        //List<User> userList = userService.getAllUsers();
+    public String doSignIn(@ModelAttribute("doUser") User user,
+                           Model model){
+
         for (User value : userService.getAllUsers()) {
             if (Objects.equals(value.getEmail(), user.getEmail())
                     && Objects.equals(value.getPassword(), user.getPassword())) {
-                //System.out.println(value.getPassword() + "---" + user.getPassword()));
+                //model.addAttribute("NeedButton", false);
                 return "redirect:/";
             }
         }
-        return "redirect:/registration";
+        model.addAttribute("invalid","Invalid Email or Password");
+        return "redirect:/sign-in-page";
     }
 
     @GetMapping("/users")
@@ -71,17 +78,24 @@ public class MainController {
     }
 
     @PostMapping("/registration")
-    public String doRegister(@ModelAttribute("user") User user){
+    @Transactional
+    public String doRegister(@ModelAttribute("user") User user,
+                             Model model){
         for (User value: userService.getAllUsers()) {
             if (Objects.equals(value.getUserName(), user.getUserName())
                     && Objects.equals(value.getEmail(), user.getEmail())
                     && Objects.equals(value.getPassword(), user.getPassword())){
+                //model.addAttribute("needButton", false);
+                model.addAttribute("alreadyCreated", "You already have an account! Please, Log in");
                 return "redirect:/sign-in-page";
             }
         }
-        //userRepository.save(user);
+
+        model.addAttribute("justCreated", "Now you have an account! Please, Log in");
+        //model.addAttribute("needButton", false)
+
         userService.saveUser(user);
-        return "redirect:/";
+        return "redirect:/sign-in-page";
     }
 
     @GetMapping("/users/{id}")
