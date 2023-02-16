@@ -9,24 +9,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import javax.transaction.Transactional;
+import java.security.Principal;
 import java.util.Collections;
 import java.util.Objects;
 
 @Controller
 public class MainController {
 
-    @Autowired
     private UserService userService;
 
+    @Autowired
     public MainController(UserService userService) {
         super();
         this.userService = userService;
     }
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String home(Model model, Principal principal) {
         model.addAttribute("title", "Главная страница");
-        //model.addAttribute("button", needButton);
+
+        User user = userService.getByEmail(principal.getName());
+        model.addAttribute("HelloAction", "Nice to see you again, " + user.getUserName());
         return "home";
     }
 
@@ -45,26 +48,8 @@ public class MainController {
 
         model.addAttribute("title", "Страница входа");
         model.addAttribute("doUser", user);
-       // System.out.println(user);
-       // model.addAttribute("name", "Hi"+ user.getUserName());
+        //System.out.println(user.getUserName());
         return "sign-in-page";
-    }
-
-    //не нужно, вроде как
-    @PostMapping("/sign-in-page")
-    public String doSignIn(@ModelAttribute("doUser") User user,
-                           Model model){
-        System.out.println(user);
-        for (User value : userService.getAllUsers()) {
-            if (Objects.equals(value.getEmail(), user.getEmail())
-                    && Objects.equals(value.getPassword(), user.getPassword())) {
-                //model.addAttribute("NeedButton", false);
-                return "redirect:/";
-            }
-        }
-
-        model.addAttribute("invalid","Invalid Email or Password");
-        return "redirect:/sign-in-page";
     }
 
 
@@ -79,15 +64,21 @@ public class MainController {
     public String doRegister(@ModelAttribute("user") User user,
                              Model model){
 
-        if (user.getId()!=null){
-            return "registration";
+
+        if (userService.isExists(user.getEmail())){
+            model.addAttribute("alreadyCreated", "You already have an account, please Sign In!");
         }else {
             user.setActive(true);
-            user.setRoles(Collections.singleton(Role.USER));
+            if (Objects.equals(user.getEmail(), "andrejteryukhov5@gmail.com")){
+                user.setRoles(Collections.singleton(Role.ADMIN));
+            }else {
+                user.setRoles(Collections.singleton(Role.USER));
+            }
             model.addAttribute("justCreated", "Now you have an account! Please, Log in");
+
             userService.saveUser(user);
-            return "redirect:/sign-in-page";
         }
+        return "redirect:/sign-in-page";
     }
 
     @GetMapping("/users")

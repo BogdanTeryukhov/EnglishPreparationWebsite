@@ -1,4 +1,4 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <div th:fragment="header">
     <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
         <div class="container-fluid">
@@ -10,7 +10,7 @@
             </form>
 
             <form class="d-flex">
-                <a role="button" class="btn btn-outline-success me-md-2" type="submit" href="/sign-in-page">Sign_in</a>
+                <a th:href="@{/logout}" class="btn btn-dark" type="submit">Sign out</a>
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-light" type="submit">Search</button>
             </form>

@@ -11,4 +11,9 @@ public class UnitsController {
     public String unit1(Model model){
         return "unit1";
     }
+
+    @GetMapping("/listening")
+    public String listening(Model model){
+        return "listening";
+    }
 }

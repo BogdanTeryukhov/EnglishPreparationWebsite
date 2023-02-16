@@ -29,15 +29,17 @@ public class WebSecurityConfig{
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+
                     .authorizeRequests()
-                    .antMatchers("/sign-in-page","/register").not().fullyAuthenticated()
-                    .antMatchers( "/admin/**","/users","/**").hasAuthority("ADMIN")
-                    .antMatchers("/**","/sign-in-page").hasAuthority("USER")
+                    .antMatchers("/sign_in_page/**","/registration/**").permitAll()
+                    .antMatchers("/users").hasAuthority("ADMIN")
+                    .antMatchers("/**").fullyAuthenticated()
                 .and()
                     .formLogin()
                     .loginPage("/sign-in-page")
+                    .successForwardUrl("/")
                     .usernameParameter("email")
-                    .defaultSuccessUrl("/", true)
+                    .defaultSuccessUrl("/", true).permitAll()
                     .permitAll()
                 .and()
                     .logout()

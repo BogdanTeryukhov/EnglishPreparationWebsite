@@ -46,12 +46,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public User getByEmail(String email) {
         Optional<User> user = userRepository.findByEmail(email);
-        if (user.isPresent()) {
-            throw new IllegalStateException("This user exists");
-        } else {
-            return user.get();
-        }
+        return user.get();
     }
 
-
+    @Override
+    public boolean isExists(String email) {
+        return userRepository.findByEmail(email).isPresent();
+    }
 }
