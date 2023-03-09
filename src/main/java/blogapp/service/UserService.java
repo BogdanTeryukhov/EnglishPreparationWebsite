@@ -14,4 +14,7 @@ public interface UserService {
     void deleteUserById(Long Id);
     User getByEmail(String email);
     boolean isExists(String email);
+
+    boolean activationUser(String code);
+    User findUserByActivationCode(String code);
 }

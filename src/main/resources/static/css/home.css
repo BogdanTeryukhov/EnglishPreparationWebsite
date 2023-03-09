@@ -1,5 +1,5 @@
 p#cram{
-    animation: fadeOut 4s linear forwards;
+    animation: fadeOut 2s linear forwards;
 }
 
 @keyframes fadeOut {

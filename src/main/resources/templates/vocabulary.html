@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
     <title>Словарь</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -8,30 +9,33 @@
 
 <body>
 <header th:insert="blocks/header :: header"></header>
+<main>
+    <div class="container mt-5">
+        <h1>Vocabulary Units</h1>
+    </div>
 
-<div class="container mt-5">
-    <h1>Vocabulary Units</h1>
-</div>
-
-<div class="album py-5 bg-light">
-    <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <div class="col">
-                <div class="card shadow-sm">
-                    <img src="https://avatars.mds.yandex.net/get-znatoki/1649112/2a0000017c2a9d245297afae479a9188fab9/w1200" class="card-img-top" alt="card-img-top" width="100%" height="272.8">
-                    <div class="card-body">
-                        <p class="card-text">Phrasal Verbs</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <a class="btn btn-primary stretched-link" href="/vocabulary/phrasalVerbs">Study</a>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="https://avatars.mds.yandex.net/get-znatoki/1649112/2a0000017c2a9d245297afae479a9188fab9/w1200" class="card-img-top" alt="card-img-top" width="100%" height="272.8">
+                        <div class="card-body">
+                            <p class="card-text">Phrasal Verbs</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a class="btn btn-primary stretched-link" href="/vocabulary/phrasalVerbs">Study</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div th:insert="blocks/footer :: footer"></div>
+    <div th:insert="blocks/footer :: footer"></div>
+</main>
+
+
 
 </body>
 </html>

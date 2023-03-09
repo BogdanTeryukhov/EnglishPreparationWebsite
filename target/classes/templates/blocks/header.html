@@ -1,19 +1,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-<div th:fragment="header">
-    <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
-        <div class="container-fluid">
+<link rel="stylesheet" type="text/css" th:href="@{/css/header.css}">
 
-            <form class="btn-group">
-                <a role="button" class="btn btn-outline-success align-content-start" type="button" href="/">Main</a>
-                <a role="button" class="btn btn-outline-success align-content-start" type="button" href="/tests">Tests</a>
-                <a role="button" class="btn btn-outline-success align-content-start" type="button" href="/vocabulary">Vocabulary</a>
-            </form>
-
-            <form class="d-flex">
-                <a th:href="@{/logout}" class="btn btn-dark" type="submit">Sign out</a>
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
-</div>
+<body>
+ <ul th:fragment="header" class="header_navbar">
+        <li><a href="/">Main</a></li>
+        <li><a href="/tests">Tests</a></li>
+        <li><a href="/vocabulary">Vocabulary</a></li>
+        <li style="float: right"><a href="#" type="submit">Search</a></li>
+        <li style="float: right"><input type="search" placeholder="Search" aria-label="Search"></li>
+        <li style="float: right"><a  th:href="@{/logout}" >Sign out</a>
+ </ul>
+</body>

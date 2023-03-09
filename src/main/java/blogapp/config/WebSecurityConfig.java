@@ -31,7 +31,7 @@ public class WebSecurityConfig{
         http
 
                     .authorizeRequests()
-                    .antMatchers("/sign_in_page/**","/registration/**").permitAll()
+                    .antMatchers("/sign_in_page/**","/registration/**","/activate/*").permitAll()
                     .antMatchers("/users").hasAuthority("ADMIN")
                     .antMatchers("/**").fullyAuthenticated()
                 .and()

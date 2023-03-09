@@ -25,6 +25,8 @@ public class User {
     @Column(name = "active")
     private boolean active;
 
+    private String activationCode;
+
     public User(String userName, String password, String email) {
         this.userName = userName;
         this.password = password;
@@ -44,9 +46,11 @@ public class User {
     public String toString() {
         return "User{" +
                 "Id=" + Id +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", userName='" + userName + '\'' +
+                ", active=" + active +
+                ", activationCode='" + activationCode + '\'' +
                 '}';
     }
 }

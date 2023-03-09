@@ -53,4 +53,22 @@ public class UserServiceImpl implements UserService{
     public boolean isExists(String email) {
         return userRepository.findByEmail(email).isPresent();
     }
+
+    @Override
+    public boolean activationUser(String code) {
+        User user = userRepository.findByActivationCode(code);
+        System.out.println(user+"\n");
+        if (user == null){
+            return false;
+        }
+
+        userRepository.save(user);
+
+        return true;
+    }
+
+    @Override
+    public User findUserByActivationCode(String code) {
+        return userRepository.findByActivationCode(code);
+    }
 }
