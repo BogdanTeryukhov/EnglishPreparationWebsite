@@ -49,7 +49,8 @@ public class MainController {
     public String signIn(Model model,
                          @ModelAttribute("alreadyCreated") String already,
                          @ModelAttribute("justCreated") String just,
-                         @ModelAttribute("invalid") String invalid){
+                         @ModelAttribute("invalid") String invalid,
+                         @ModelAttribute("message") String message){
         User user = new User();
 
         model.addAttribute("title", "Страница входа");
