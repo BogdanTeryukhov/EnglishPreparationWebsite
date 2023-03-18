@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public boolean activationUser(String code) {
         User user = userRepository.findByActivationCode(code);
-        System.out.println(user+"\n");
+
         if (user == null){
             return false;
         }
