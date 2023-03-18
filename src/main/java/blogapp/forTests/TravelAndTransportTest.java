@@ -6,27 +6,30 @@ import javax.validation.constraints.Pattern;
 
 @Data
 public class TravelAndTransportTest {
+    public static final String str = "Не должно быть пустым, хоть что-нибудь напиши :)";
+    public static final String message = "\nShould be only words! Such a dumbass";
+    public static final String regexp = "[a-zA-Z]*\s*[a-zA-Z]*";
 
-    @NotBlank(message = "Не должно быть пустым, хоть что-нибудь напиши :)")
-    @Pattern(regexp = "[a-zA-Z]*\s*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
+    @NotBlank(message = str)
+    @Pattern(regexp = regexp, message = message)
     private String setOutOff;
-    @NotBlank(message = "Не должно быть пустым, хоть что-нибудь напиши :)")
-    @Pattern(regexp = "[a-zA-Z]*\s*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
+    @NotBlank(message = str)
+    @Pattern(regexp = regexp, message = message)
     private String checkedIn;
-    @NotBlank(message = "Не должно быть пустым, хоть что-нибудь напиши :)")
-    @Pattern(regexp = "[a-zA-Z]*\s*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
+    @NotBlank(message = str)
+    @Pattern(regexp = regexp, message = message)
     private String dropMeOff;
-    @NotBlank(message = "Не должно быть пустым, хоть что-нибудь напиши :)")
-    @Pattern(regexp = "[a-zA-Z]*\s*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
+    @NotBlank(message = str)
+    @Pattern(regexp = regexp, message = message)
     private String turnAround;
-    @NotBlank(message = "Не должно быть пустым, хоть что-нибудь напиши :)")
-    @Pattern(regexp = "[a-zA-Z]*\s*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
+    @NotBlank(message = str)
+    @Pattern(regexp = regexp, message = message)
     private String takesOff;
-    @NotBlank(message = "Не должно быть пустым, хоть что-нибудь напиши :)")
-    @Pattern(regexp = "[a-zA-Z]*\s*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
+    @NotBlank(message = str)
+    @Pattern(regexp = regexp, message = message)
     private String runOver;
-    @NotBlank(message = "Не должно быть пустым, хоть что-нибудь напиши :)")
-    @Pattern(regexp = "[a-zA-Z]*\s*[a-zA-Z]*", message = "\nShould be only words! Such a dumbass")
+    @NotBlank(message = str)
+    @Pattern(regexp = regexp, message = message)
     private String keepUpWith;
 
     @Override
