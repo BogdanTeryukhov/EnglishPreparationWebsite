@@ -11,7 +11,7 @@
 <header th:insert="blocks/header :: header"></header>
 
 <main>
-    <form action="#" method="post" th:action="@{/users/{id} (id=${user.id})}" th:object="${user}">
+    <form action="#" method="post" th:action="@{/admin/users/{id} (id=${user.id})}" th:object="${user}">
         <h1 class="h3 mb-3 fw-normal">Please update an account</h1>
         <div class="form-floating">
             <input th:field="*{userName}" type="text" class="form-control col-5" id="floatingUsername" placeholder="Username">
